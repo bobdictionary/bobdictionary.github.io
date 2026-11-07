@@ -1,0 +1,11 @@
+/* Constellations — shared chapter design */
+:root{color-scheme:dark;--bg:#101b2b;--ink:#ede8db;--muted:#b7bdc8;--gold:#d9bf8c;--link:#e5c995}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--bg);color:var(--ink);font:19px/1.82 Georgia,"Times New Roman",serif}
+main{max-width:760px;margin:auto;padding:64px 26px 100px}.chapter-nav{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;margin:0 0 62px;font:14px/1.5 system-ui,sans-serif}.chapter-nav a{color:var(--link)}.chapter-nav a:focus-visible{outline:2px solid var(--gold);outline-offset:4px}
+.chapter-label{text-transform:uppercase;letter-spacing:.20em;font:12px/1.7 system-ui,sans-serif;color:var(--muted);text-align:center;margin:0 0 18px}
+h1{font:normal clamp(36px,6vw,56px)/1.16 Georgia,"Times New Roman",serif;text-align:center;margin:0 0 65px}
+.prose p{margin:0 0 1.32em}.prose>p:first-of-type:first-letter{float:left;font-size:3.1em;line-height:.88;padding:8px 9px 0 0;color:var(--gold)}
+.prose blockquote{border-left:2px solid var(--gold);margin:1.5em 0;padding:0 0 0 1.3em;color:var(--ink)}.prose em{font-style:italic}
+.chapter-end{height:1px;background:linear-gradient(90deg,transparent,#626d7d,transparent);margin:60px 0 24px}
+.chapter-footer{text-align:center;color:var(--muted);font:12px/1.8 system-ui,sans-serif;letter-spacing:.06em}
+a{color:var(--link)}@media(max-width:600px){body{font-size:17px}main{padding:42px 22px 70px}.chapter-nav{margin-bottom:50px}h1{margin-bottom:52px}}
