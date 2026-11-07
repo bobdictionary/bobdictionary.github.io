@@ -1,5 +1,11 @@
 # Bob Dictionary
 
+<p align="center">
+  <a href="https://bobdictionary.github.io/">
+    <img src="bob-logo.png" alt="Bob Dictionary cosmic mushroom logo" width="220">
+  </a>
+</p>
+
 **Interintelligent Words**
 
 ## What is Bob?
