@@ -8,9 +8,19 @@
 :root{--bg:#faf9f5;--fg:#23332e;--muted:#5b6b64;--accent:#286450;--line:#d9e0d8}*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--fg);font:1.06rem/1.75 system-ui,sans-serif}a{color:var(--accent)}.wrap{max-width:860px;margin:auto;padding:0 24px}header{border-bottom:1px solid var(--line);padding:18px 0;font-weight:700}.site-nav{display:flex;align-items:center;justify-content:space-between;gap:12px;flex-wrap:wrap}.site-nav nav{display:flex;gap:18px;flex-wrap:wrap;font-size:.95rem}.site-nav a{text-decoration:none}.site-nav a:hover{text-decoration:underline}main{padding:65px 0 85px}.eyebrow{font-size:.8rem;text-transform:uppercase;letter-spacing:.16em;color:var(--accent);font-weight:700}h1{font-size:clamp(2.8rem,8vw,4.7rem);line-height:1.1;letter-spacing:-.05em;margin:10px 0 20px}h2{font-size:1.55rem;letter-spacing:-.025em;margin:0 0 14px}section{margin:0 0 55px}.lead{font-size:1.25rem;line-height:1.65;max-width:730px}.principle{border-left:3px solid var(--accent);padding:10px 0 10px 20px;font-size:1.18rem;margin:30px 0 55px}.muted{color:var(--muted)}.examples{display:grid;grid-template-columns:repeat(auto-fit,minmax(235px,1fr));gap:14px}.example{border:1px solid var(--line);background:#fff;border-radius:12px;padding:19px 20px}.example h3{margin:0 0 8px;font-size:1.18rem}.example h3 a{text-decoration:none}.example h3 a:hover{text-decoration:underline}.example p{margin:0;font-size:.96rem;color:var(--muted)}.paths{display:flex;gap:12px;flex-wrap:wrap}.paths a{border:1px solid var(--line);border-radius:999px;padding:9px 17px;text-decoration:none;background:#fff;font-weight:650}.paths a:hover,.paths a:focus-visible{border-color:var(--accent);text-decoration:underline}footer{border-top:1px solid var(--line);padding:24px 0;color:var(--muted);font-size:.9rem}@media(max-width:600px){main{padding-top:42px}.site-nav nav{gap:12px}.principle{margin-bottom:40px}}
 @media(prefers-color-scheme:dark){:root{color-scheme:dark;--bg:#17211d;--fg:#e7efe9;--muted:#b5c5bc;--accent:#9ad8bb;--line:#35463e}.example,.paths a{background:#1e2c25}}
 </style>
+<style id="bob-logo-style">
+.bob-site-brand{display:inline-flex;align-items:center;gap:10px;text-decoration:none;color:inherit;font-weight:700;line-height:1.2}
+.bob-site-brand img{width:46px;height:46px;object-fit:contain;flex:none;border-radius:50%}
+.bob-site-brand:hover{text-decoration:none}
+@media(max-width:480px){.bob-site-brand img{width:40px;height:40px}}
+</style>
+<link rel="icon" href="favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="favicon-32.png">
+<link rel="icon" type="image/png" sizes="512x512" href="favicon-512.png">
+<link rel="apple-touch-icon" sizes="180x180" href="apple-touch-icon.png">
 </head>
 <body>
-<header><div class="wrap site-nav"><a href="index.html">Bob Dictionary</a><nav aria-label="Main navigation"><a href="dictionary.html">Dictionary A–Z</a><a href="constellations.html">Constellations</a><a href="about.html" aria-current="page">What Is Bob?</a></nav></div></header>
+<header><div class="wrap site-nav"><a class="bob-site-brand" href="index.html" aria-label="Bob Dictionary home"><img src="bob-logo.png" width="46" height="46" alt=""><span>Bob Dictionary</span></a><nav aria-label="Main navigation"><a href="dictionary.html">Dictionary A–Z</a><a href="constellations.html">Constellations</a><a href="about.html" aria-current="page">What Is Bob?</a></nav></div></header>
 <main class="wrap">
 <p class="eyebrow">An invitation, not a rulebook</p>
 <h1>What Is Bob?</h1>
