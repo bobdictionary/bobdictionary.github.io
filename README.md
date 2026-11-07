@@ -37,3 +37,9 @@ The public dictionary is a curated, evolving edition. The underlying conversatio
 Bob is not a finished language, a compulsory framework, or a claim that every possibility is true. It is a way of remaining curious while making room for difference, uncertainty, discovery, and play.
 
 **Bob should invite curiosity, not demand agreement.**
+
+---
+
+**The Bob Dictionary belongs to everyone.**
+
+Dedicated to the public domain under [CC0 1.0 Universal](https://creativecommons.org/publicdomain/zero/1.0/). Free to use, share, modify, and redistribute, to the extent the contributors hold the applicable rights. No attribution required.
