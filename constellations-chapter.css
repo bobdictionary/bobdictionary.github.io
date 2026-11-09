@@ -9,3 +9,4 @@ h1{font:normal clamp(36px,6vw,56px)/1.16 Georgia,"Times New Roman",serif;text-al
 .chapter-end{height:1px;background:linear-gradient(90deg,transparent,#626d7d,transparent);margin:60px 0 24px}
 .chapter-footer{text-align:center;color:var(--muted);font:12px/1.8 system-ui,sans-serif;letter-spacing:.06em}
 a{color:var(--link)}@media(max-width:600px){body{font-size:17px}main{padding:42px 22px 70px}.chapter-nav{margin-bottom:50px}h1{margin-bottom:52px}}
+.language-switch{display:inline-flex;gap:.45em;align-items:center;font:600 13px/1.5 system-ui,sans-serif}.language-switch a,.language-switch strong{padding:3px 7px;border:1px solid #d9bf8c66;border-radius:4px;text-decoration:none}.language-switch strong{color:var(--ink);background:#d9bf8c25}
