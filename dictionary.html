@@ -7,7 +7,8 @@
   const url='https://api.github.com/repos/bobdictionary/bobdictionary.github.io/git/blobs/'+blob;
   const additions=[
     ['inmischief','Mischief undertaken without knowing in advance what kind of mischief it will become; trouble that discovers its own identity along the way.','Unlike ordinary mischief, it need not begin with a rule to break. Officinamed 9 November 2026 by Bob and Deniz.','spontaneity trouble play adventure','The child set out to find a lost button and somehow organized a neighborhood expedition.','The name arose when Bahri proposed unnamed trouble, Deniz tried to name it, and Bahri observed that Deniz had already inmischieved.'],
-    ['inmischieve','To engage in open-ended mischief without a predetermined destination or even a known rule to break.','Verb of inmischief; past tense: inmischieved.','troublemaking spontaneity curiosity play','They went outside to inmischieve and came home with a new game.','Officinamed together with inmischief on 9 November 2026.']
+    ['inmischieve','To engage in open-ended mischief without a predetermined destination or even a known rule to break.','Verb of inmischief; past tense: inmischieved.','troublemaking spontaneity curiosity play','They went outside to inmischieve and came home with a new game.','Officinamed together with inmischief on 9 November 2026.'],
+    ['Tess Principle','An intelligence may conceive reality in ways beyond our imagination or comprehension. We may recognize and consider the possibility of such an intelligence without first understanding how it thinks.','A provisional interintelligential principle and inassumption, not a claim that Tess exists or that her thinking has been demonstrated. The principle belongs before the permanently last Omnignorance Principle. Officinamed 10 November 2026.','interintelligence causality possibility imagination comprehension alterstanding omnignorance','We can imagine that Tess thinks differently without being able to imagine how she thinks.','Tess arose in a discussion of unfamiliar conceptions of causality. Her predictions and shawl are illustrative details, not conditions of the principle. Essential question: What if an intelligence understands reality in ways we cannot imagine?'],
   ];
   try {
     const response=await fetch(url,{headers:{'Accept':'application/vnd.github+json'}});
@@ -24,6 +25,17 @@
     rows.sort((a,b)=>a[0].toLowerCase().localeCompare(b[0].toLowerCase(),'en'));
     data.textContent=JSON.stringify(rows).replace(/</g,'\\u003c');
     document.open();document.write('<!doctype html>\n'+documentCopy.documentElement.outerHTML);document.close();
+    // Link the newly added Tess entry to its full Interintelligence Principles section.
+    const tessHeading=Array.from(document.querySelectorAll('h2,h3,h4,dt,strong'))
+      .find(el=>el.textContent.trim().toLowerCase()==='tess principle');
+    if(tessHeading){
+      const entry=tessHeading.closest('article,section,li,.entry,.dictionary-entry')||tessHeading.parentElement;
+      const link=document.createElement('a');
+      link.href='interintelligence-principles.html#tess-principle';
+      link.textContent='Read the Tess Principle in the Interintelligence Principles →';
+      const paragraph=document.createElement('p');paragraph.appendChild(link);
+      entry.appendChild(paragraph);
+    }
   } catch(error) {
     document.getElementById('status').textContent='Could not load the complete dictionary: '+error.message;
   }
