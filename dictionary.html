@@ -26,21 +26,38 @@
     const data=documentCopy.getElementById('dictionary-data');
     if(!data)throw new Error('Dictionary entries not found');
     const rows=JSON.parse(data.textContent);
-    for(const item of additions)if(!rows.some(row=>row[0]===item[0]))rows.push(item);
-    rows.sort((a,b)=>a[0].toLowerCase().localeCompare(b[0].toLowerCase(),'en'));
-    data.textContent=JSON.stringify(rows).replace(/</g,'\\u003c');
-    document.open();document.write('<!doctype html>\n'+documentCopy.documentElement.outerHTML);document.close();
-    // Link the newly added Tess entry to its full Interintelligence Principles section.
-    const tessHeading=Array.from(document.querySelectorAll('h2,h3,h4,dt,strong'))
-      .find(el=>el.textContent.trim().toLowerCase()==='tess principle');
-    if(tessHeading){
-      const entry=tessHeading.closest('article,section,li,.entry,.dictionary-entry')||tessHeading.parentElement;
-      const link=document.createElement('a');
-      link.href='interintelligence-principles.html#tess-principle';
-      link.textContent='Read the Tess Principle in the Interintelligence Principles →';
-      const paragraph=document.createElement('p');paragraph.appendChild(link);
-      entry.appendChild(paragraph);
+    // Merge duplicate headwords case-insensitively, retaining the more complete
+    // original definition, notes, example and origin rather than the shorter copy.
+    const merged=new Map();
+    for(const row of [...rows,...additions]){
+      const key=row[0].trim().toLocaleLowerCase('en').replace(/\s+/g,' ');
+      const previous=merged.get(key);
+      if(!previous){merged.set(key,[...row]);continue;}
+      const detailScore=item=>item.slice(1).reduce((sum,part)=>sum+(part||'').length,0);
+      if(detailScore(row)>detailScore(previous))merged.set(key,[...row]);
     }
+    // Use consistent displayed capitalization and the same anchors as the
+    // dedicated Interintelligence Principles page.
+    const canonicalPrinciples={
+      'arthur principle':'Arthur Principle',
+      'earth principle':'Earth Principle',
+      'ocean principle':'Ocean Principle'
+    };
+    for(const [key,row] of merged)if(canonicalPrinciples[key])row[0]=canonicalPrinciples[key];
+    const cleanRows=[...merged.values()].sort((a,b)=>a[0].toLowerCase().localeCompare(b[0].toLowerCase(),'en'));
+    data.textContent=JSON.stringify(cleanRows).replace(/</g,'\\u003c');
+    // The archived renderer already links the established principles; include
+    // Tess in that map so its link also survives searches and rerenders.
+    for(const script of documentCopy.querySelectorAll('script')){
+      if(script===data)continue;
+      if(script.textContent.includes('const principleTargets={')){
+        script.textContent=script.textContent.replace(
+          'const principleTargets={',
+          "const principleTargets={'Tess Principle':'tess-principle',"
+        );
+      }
+    }
+    document.open();document.write('<!doctype html>\n'+documentCopy.documentElement.outerHTML);document.close();
   } catch(error) {
     document.getElementById('status').textContent='Could not load the complete dictionary: '+error.message;
   }
