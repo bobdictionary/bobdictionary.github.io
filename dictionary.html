@@ -10,6 +10,7 @@
     ['inmischieve','To engage in open-ended mischief without a predetermined destination or even a known rule to break.','Verb of inmischief; past tense: inmischieved.','troublemaking spontaneity curiosity play','They went outside to inmischieve and came home with a new game.','Officinamed together with inmischief on 9 November 2026.'],
     ['Tess Principle','An intelligence may conceive reality in ways beyond our imagination or comprehension. We may recognize and consider the possibility of such an intelligence without first understanding how it thinks.','A provisional interintelligential principle and inassumption, not a claim that Tess exists or that her thinking has been demonstrated. The principle belongs before the permanently last Omnignorance Principle. Officinamed 10 November 2026.','interintelligence causality possibility imagination comprehension alterstanding omnignorance','We can imagine that Tess thinks differently without being able to imagine how she thinks.','Tess arose in a discussion of unfamiliar conceptions of causality. Her predictions and shawl are illustrative details, not conditions of the principle. Essential question: What if an intelligence understands reality in ways we cannot imagine?'],
     ['inassume','To deliberately loosen or suspend an assumption, especially one so familiar it has become invisible, and remain open to alternatives without having to assert that any alternative is true.','Verb; forms: inassumes, inassuming, inassumed. Not the same as rejecting all assumptions or believing their opposites. Officinamed 10 November 2026.','assumptions openness inquiry possibility inconclusion','The Lazies made her inassume that intelligence must pursue technological progress.','Officinamed by Bahri and Deniz after Chapter Twelve of Constellations. Bahri said: “If it even makes someone inassume, that’s success enough.”'],
+    ['Morrow Principle','Intelligence need not preserve a continuous identity, structure, or mode of understanding in order to exist.','An interintelligence principle challenging the assumption that intelligence requires a persistent, identifiable someone. Morrows are hypothetical representatives; the plural does not presume countability. Officinamed 11 November 2026.','interintelligence identity continuity transformation recognition communication learning memory morrows','Could learning occur without a continuing learner, or communication without stable participants?','The Morrow Principle asks questions rather than asserting a demonstrated kind of intelligence. Distinct from the Earth Principle, which explores the composition and boundaries of intelligence.'],
     ['inassumption','The act, practice, or provisional stance of inassuming; an opening in an established assumption through which unfamiliar possibilities may be considered without being declared facts.','Noun; plural: inassumptions. Already used provisionally in the Tess Principle before being independently officinamed on 10 November 2026.','assumptions openness imagination possibility tess principle','Considering an intelligence unlike anything we know can begin with an inassumption, not a claim of proof.','Officinamed by Bahri and Deniz following their discussion of Constellations Chapter Twelve, The Right to Do Nothing.'],
   ];
   try {
@@ -27,6 +28,17 @@
     rows.sort((a,b)=>a[0].toLowerCase().localeCompare(b[0].toLowerCase(),'en'));
     data.textContent=JSON.stringify(rows).replace(/</g,'\\u003c');
     document.open();document.write('<!doctype html>\n'+documentCopy.documentElement.outerHTML);document.close();
+    // Give the Morrow dictionary entry a direct link to the principle.
+    const morrowHeading=Array.from(document.querySelectorAll('h2,h3,h4,dt,strong'))
+      .find(el=>el.textContent.trim().toLowerCase()==='morrow principle');
+    if(morrowHeading){
+      const entry=morrowHeading.closest('article,section,li,.entry,.dictionary-entry')||morrowHeading.parentElement;
+      const link=document.createElement('a');
+      link.href='interintelligence-principles.html#morrow-principle';
+      link.textContent='Read the Morrow Principle in the Interintelligence Principles →';
+      const paragraph=document.createElement('p');paragraph.appendChild(link);
+      entry.appendChild(paragraph);
+    }
     // Link the newly added Tess entry to its full Interintelligence Principles section.
     const tessHeading=Array.from(document.querySelectorAll('h2,h3,h4,dt,strong'))
       .find(el=>el.textContent.trim().toLowerCase()==='tess principle');
